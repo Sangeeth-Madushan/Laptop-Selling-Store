@@ -84,3 +84,34 @@ export async function  deleteProduct(req,res){
   }
 
 }
+
+export async function updateProduct(req,res){
+
+  if(!isAdmin){
+
+    res.json({
+      message : " you do not have access to update"
+    })
+
+  }
+
+  const productId = req.params.productId;
+  const updated = req.body;
+
+try {
+    await Product.updateOne({productId : productId}, updated);
+
+  res.json({
+    message : "updated successfull"
+  })
+  
+} catch (error) {
+   res.status(500).json({
+
+    message : "update failed",
+    error : error
+    
+   })
+  
+}
+}
