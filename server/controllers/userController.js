@@ -32,7 +32,6 @@ if (req.user.role !== "admin") {
 
 // If the user is logged in and is an admin, continue with the task...
 
-
   const hashedPassword = bcrypt.hashSync(req.body.password, 10);
 
   const user = new User({
