@@ -1,5 +1,9 @@
 import mongoose from "mongoose";
 import express from "express";
+import productRouter from "./routes/productRoutes.js";
+import userRoute from "./routes/userRoutes.js";
+import jwt, { decode } from "jsonwebtoken";
+import bodyParser from "body-parser";
 
 
 //testing commit
