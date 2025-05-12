@@ -18,7 +18,8 @@ mongoose
     console.log("Db connection failed");p
   });
 
-
+//Routes
+app.use("/users", userRoute)
 
 app.listen(5000, ()=>{
     console.log("app is listening port 5000")
