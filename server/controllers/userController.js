@@ -123,4 +123,6 @@ export function isAdmin(req){
     return false; // stop here too
   }
 
+  return true
+
 }
