@@ -19,6 +19,7 @@ mongoose
   });
 
 //Routes
+app.use("/products",productRouter )
 app.use("/users", userRoute)
 
 app.listen(5000, ()=>{
