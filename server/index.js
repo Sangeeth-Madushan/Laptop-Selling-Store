@@ -4,6 +4,7 @@ import productRouter from "./routes/productRoutes.js";
 import userRoute from "./routes/userRoutes.js";
 import jwt, { decode } from "jsonwebtoken";
 import bodyParser from "body-parser";
+import orderRouter from "./routes/orderRoutes.js";
 
 
 //testing commit
@@ -53,6 +54,7 @@ mongoose
 //Routes
 app.use("/products",productRouter )
 app.use("/users", userRoute)
+app.use("/orders",orderRouter)
 
 app.listen(5000, ()=>{
     console.log("app is listening port 5000")
