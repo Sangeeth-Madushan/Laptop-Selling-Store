@@ -6,10 +6,10 @@ import jwt, { decode } from "jsonwebtoken";
 import bodyParser from "body-parser";
 import cors from 'cors';
 import orderRouter from "./routes/orderRoutes.js";
+import dotenv from 'dotenv';
 
+dotenv.config(); // Load .env file variables
 
-
-//testing commit
 const app = express();
 
 app.use(cors())
@@ -45,19 +45,19 @@ app.use((req,res,next)=>{
 
 mongoose
   .connect(
-    "mongodb+srv://user:12345@cluster0.mdhspzj.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+    process.env.DB_URL
   )
   .then(() => {
     console.log("Db is connected");
   })
   .catch(() => {
-    console.log("Db connection failed");p
+    console.log("Db connection failed");
   });
 
 //Routes
-app.use("/products",productRouter )
-app.use("/users", userRoute)
-app.use("/orders",orderRouter)
+app.use("/api/products",productRouter )
+app.use("/api/users", userRoute)
+app.use("/api/orders",orderRouter)
 
 app.listen(5000, ()=>{
     console.log("app is listening port 5000")

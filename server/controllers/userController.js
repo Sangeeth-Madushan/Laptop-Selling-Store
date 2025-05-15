@@ -93,7 +93,7 @@ export function loginUser(req,res){
 
                 }else{
                     res.status(401).json({
-                        messsage : "invalid password"
+                        message : "invalid password"
                     })
                 }
             }
