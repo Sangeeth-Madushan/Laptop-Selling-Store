@@ -20,7 +20,7 @@ app.use((req,res,next)=>{
 
     const token = tokenString.replace("Bearer ", "")
    
-    jwt.verify(token, "AbcJayalath99",(err, decoded)=>{
+    jwt.verify(token, process.env.JWT_KEY,(err, decoded)=>{
      
       if(decoded != null){
         // Stores the decoded user data with user request inside req.user

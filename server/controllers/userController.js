@@ -1,7 +1,9 @@
 import User from "../models/user.js";
 import bcrypt from 'bcrypt';
 import jwt from "jsonwebtoken";
+import dotenv from 'dotenv'
 
+dotenv.config();
 
 export function getUser(req, res) {
     User.find().then((data)=>{
@@ -80,7 +82,7 @@ export function loginUser(req,res){
                         role : user.role,
                         img : user.img
                     },
-                    "AbcJayalath99"
+                    process.env.JWT_KEY
                 ) 
 
                 res.status(200).json({
