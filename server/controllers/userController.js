@@ -61,10 +61,11 @@ export function loginUser(req,res){
 
     User.findOne( {email :email}).then(
         (user)=>{
-            if(user == null){
-                res.json({
-                    message : "user not found"
-                })
+            if (user == null) {
+        // User not found → 404
+        return res.status(404).json({
+          message: "User not found",
+        });
             }else{
 
                 //password entered by the user (password) matches the saved (hashed) password in the database (user.password).
@@ -82,7 +83,7 @@ export function loginUser(req,res){
                     "AbcJayalath99"
                 ) 
 
-                res.json({
+                res.status(200).json({
                     message:"passsword is correct you have access",
                     token: token
 
@@ -91,7 +92,7 @@ export function loginUser(req,res){
 
 
                 }else{
-                    res.json({
+                    res.status(401).json({
                         messsage : "invalid password"
                     })
                 }
@@ -101,7 +102,7 @@ export function loginUser(req,res){
 
 
     ).catch(()=>{
-        res.json({message: "something went wrong "})
+        res.status(500).json({message: "something went wrong "})
     })
 
 
