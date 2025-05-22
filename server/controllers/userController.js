@@ -18,19 +18,19 @@ export function getUser(req, res) {
 
 export function saveUser(req, res) {
 
-    if (req.user == null) {
-  res.status(401).json({
-    message: "You are not logged in. Please login.",
-  });
-  return;
-}
+//     if (req.user == null) {
+//   res.status(401).json({
+//     message: "You are not logged in. Please login.",
+//   });
+//   return;
+// }
 
-if (req.user.role !== "admin") {
-  res.status(403).json({
-    message: "You are not authorized to create an admin because you are not an admin.",
-  });
-  return;
-}
+// if (req.user.role !== "admin") {
+//   res.status(403).json({
+//     message: "You are not authorized to create an admin because you are not an admin.",
+//   });
+//   return;
+// }
 
 // If the user is logged in and is an admin, continue with the task...
 
@@ -87,7 +87,8 @@ export function loginUser(req,res){
 
                 res.status(200).json({
                     message:"passsword is correct you have access",
-                    token: token
+                    token: token,
+                    role : user.role
 
                 })
 
