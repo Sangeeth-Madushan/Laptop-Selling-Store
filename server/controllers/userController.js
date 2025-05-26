@@ -17,20 +17,25 @@ export function getUser(req, res) {
 }
 
 export function saveUser(req, res) {
+  const { email, firstName, lastName, password, role } = req.body;
 
-//     if (req.user == null) {
-//   res.status(401).json({
-//     message: "You are not logged in. Please login.",
-//   });
-//   return;
-// }
+  // Validate required fields
+  if (!email || !firstName || !lastName || !password ) {
+    return res.status(400).json({
+      message: "Missing required fields",
+    });
+  }
 
-// if (req.user.role !== "admin") {
-//   res.status(403).json({
-//     message: "You are not authorized to create an admin because you are not an admin.",
-//   });
-//   return;
-// }
+  // If trying to create an 'admin' account:
+  if (role === "admin") {
+    // Check if user is logged in and is an admin
+    if (!req.user || req.user.role !== "admin") {
+      return res.status(403).json({
+        message:
+          "You are not authorized to create an admin account. Please login as an admin.",
+      });
+    }
+  }
 
 // If the user is logged in and is an admin, continue with the task...
 
