@@ -74,7 +74,8 @@ export function loginUser(req,res){
           message: "User not found",
         });
             }else{
-
+                
+                //test commit
                 //password entered by the user (password) matches the saved (hashed) password in the database (user.password).
                 const isPasswordCorrect = bcrypt.compareSync(password, user.password);
 
