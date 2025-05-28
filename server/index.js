@@ -7,6 +7,7 @@ import bodyParser from "body-parser";
 import cors from 'cors';
 import orderRouter from "./routes/orderRoutes.js";
 import dotenv from 'dotenv';
+import reviewRouter from "./routes/reviewRoutes.js";
 
 dotenv.config(); // Load .env file variables
 
@@ -58,6 +59,7 @@ mongoose
 app.use("/api/products",productRouter )
 app.use("/api/users", userRoute)
 app.use("/api/orders",orderRouter)
+app.use("/api/reviews",reviewRouter)
 
 app.listen(5000, ()=>{
     console.log("app is listening port 5000")
