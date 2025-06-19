@@ -14,6 +14,6 @@ productRouter.put("/:productId",updateProduct);
 
 productRouter.get("/:productId", getProductById)
 
-productRouter.get("/search/:id",searchProduct)
+productRouter.get("/search/:query",searchProduct)
 
 export default productRouter;

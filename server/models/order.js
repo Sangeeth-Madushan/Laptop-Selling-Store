@@ -56,7 +56,7 @@ const orderSchema = mongoose.Schema({
                 images : [{
                     type : String
                 }],
-                labelledPrice : {
+                labellePrice : {
                     type : Number,
                     required : true
                 },
