@@ -6,17 +6,17 @@ import axios from "axios";
 
 dotenv.config();
 
-export function getUser(req, res) {
-  User.find()
-    .then((data) => {
-      res.json(data);
-    })
-    .catch(() => {
-      res.json({
-        message: "users not found",
-      });
-    });
-}
+// export function getUser(req, res) {
+//   User.find()
+//     .then((data) => {
+//       res.json(data);
+//     })
+//     .catch(() => {
+//       res.json({
+//         message: "users not found",
+//       });
+//     });
+// }
 
 export function saveUser(req, res) {
   const { email, firstName, lastName, password, role } = req.body;
@@ -176,6 +176,20 @@ export async function loginWithGoogle(req, res) {
     });
   }
 }
+
+export function getUser(req,res){
+    if(req.user == null){
+        res.status(403).json({
+            message: "You are not authorized to view user details"
+        })
+        return
+    }else{
+        res.json({
+            ...req.user
+        })
+    }
+}
+
 
 // short code for checking user is admin or not
 export function isAdmin(req) {
