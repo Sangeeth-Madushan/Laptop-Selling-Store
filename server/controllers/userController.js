@@ -190,6 +190,23 @@ export function getUser(req,res){
     }
 }
 
+export async function getNonAdminUsers(req, res) {
+  try {
+    // Only allow admins to call this route
+    if (!req.user || req.user.role !== "admin") {
+      return res.status(403).json({ message: "Only admins can view all users" });
+    }
+
+    // Find all users where role is NOT 'admin'
+    const customers = await User.find({ role: { $ne: "admin" } }); //  $ne = "not equal"
+
+    res.json(customers);
+  } catch (err) {
+    console.error("Error fetching users:", err);
+    res.status(500).json({ message: "Server error" });
+  }
+}
+
 
 // short code for checking user is admin or not
 export function isAdmin(req) {
